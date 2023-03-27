@@ -1,12 +1,12 @@
 import { tasksActions } from "../../store/tasks/tasks-slice";
 
 const database = "https://ziad-to-do-default-rtdb.europe-west1.firebasedatabase.app";
-const userId = localStorage.getItem("userId");
-
-const url = `${database}/users/${userId}/tasks.json`;
 
 export const uploadTask = ({ task, time, date }) => {
     return (dispatch) => {
+        const userId = localStorage.getItem("userId");
+        const url = `${database}/users/${userId}/tasks.json`;
+
         const body = {
             task,
             time,
@@ -30,6 +30,7 @@ export const removeTask = (id) => {
     return (dispatch) => {
         dispatch(tasksActions.removeTask(id));
 
+        const userId = localStorage.getItem("userId");
         const url = `${database}/users/${userId}/tasks/${id}.json`;
 
         const request = new Request(url, { method: "DELETE" });
@@ -45,6 +46,8 @@ export const removeTask = (id) => {
 
 export const updateTask = ({ id, task, time, date, done }) => {
     return (dispatch) => {
+        const userId = localStorage.getItem("userId");
+
         let url, body;
         if (done === undefined) {
             dispatch(tasksActions.replaceTask({ id, task, time, date }));
@@ -73,6 +76,10 @@ export const updateTask = ({ id, task, time, date, done }) => {
 export const getTasks = () => {
     return (dispatch) => {
         dispatch(tasksActions.loading(true));
+
+        const userId = localStorage.getItem("userId");
+        const url = `${database}/users/${userId}/tasks.json`;
+
         fetch(url)
             .then((response) => response.json())
             .then((response) => {
