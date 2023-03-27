@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import {
@@ -16,16 +16,18 @@ export default function App() {
     return (
         <ErrorBoundary>
             <Provider store={store}>
-                <MainPageLayout>
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/welcome" element={<WelcomePage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route path="/register" element={<RegistrationPage />} />
-                        <Route path="/change_password" element={<ChangePasswordPage />} />
-                        <Route path="/*" element={<NotFoundPage />} />
-                    </Routes>
-                </MainPageLayout>
+                <Router>
+                    <MainPageLayout>
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/welcome" element={<WelcomePage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                            <Route path="/register" element={<RegistrationPage />} />
+                            <Route path="/change_password" element={<ChangePasswordPage />} />
+                            <Route path="/*" element={<NotFoundPage />} />
+                        </Routes>
+                    </MainPageLayout>
+                </Router>
             </Provider>
         </ErrorBoundary>
     );
