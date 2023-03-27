@@ -44,7 +44,7 @@ export default function Task({
         return <EditTaskForm id={id} task={task} time={time} date={date} onSubmit={editTask} />;
     else
         return (
-            <article className="flex flex-wrap gap-3 items-center justify-center bg-primary_400 m-3.5 p-3.5 rounded-2xl hover:text-primary_200 hover:bg-primary_800 [&:hover>div>div>div]:text-primary_400">
+            <article className="flex flex-wrap gap-3 items-center justify-center bg-primary_400 m-3.5 p-3.5 rounded-2xl hover:text-primary_200 hover:bg-primary_800 [&:hover>div>div>div]:text-primary_400 transition">
                 <div className="flex gap-3 flex-1 min-w-fit">
                     <div className="relative top-0.5 w-2 ml-2">
                         <label htmlFor={id} className="absolute invisible">
