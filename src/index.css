@@ -78,15 +78,20 @@ input[type="time"]::-webkit-datetime-edit {
     width: 100%;
 } */
 
-[type="date"] {
-    background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
-        87.5% no-repeat;
+[type="time"] {
+    background: url("./assets/imgs/wall-clock.png") 82% / 15% no-repeat;
 }
 
+[type="date"] {
+    background: url("./assets/imgs/calendar.png") 87.5% / 11% no-repeat;
+}
+
+[type="time"]::-webkit-inner-spin-button,
 [type="date"]::-webkit-inner-spin-button {
     display: none;
 }
 
+[type="time"]::-webkit-calendar-picker-indicator,
 [type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0;
 }

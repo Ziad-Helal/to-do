@@ -1,12 +1,20 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../../components";
 import { uploadTask } from "../../../store/tasks/tasks-actionCreators";
 
 export default function AddTaskForm() {
-    // const [timeHasValue, setTimeHasValue] = useState(true);
-    // const [dateHasValue, setDateHasValue] = useState(true);
     const dispatch = useDispatch();
+
+    const dateObj = new Date();
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const year = dateObj.getFullYear();
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const hour = String(dateObj.getHours()).padStart(2, "0");
+    const minute = String(dateObj.getMinutes()).padStart(2, "0");
+
+    const currentDate = year + "-" + month + "-" + day;
+    const currentTime = hour + ":" + minute;
 
     const taskRef = useRef();
     const timeRef = useRef();
@@ -27,7 +35,7 @@ export default function AddTaskForm() {
 
     return (
         <form
-            className="bg-primary_400 m-3.5 p-3.5 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_800 [&:hover>fieldset>div:last-child]:text-primary_400 transition"
+            className="bg-primary_400 m-3.5 p-3.5 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_800 [&:hover>fieldset>div:last-child>div>input]:text-primary_400 [&:hover>fieldset>div:last-child>div>input]:border-primary_400 [&:hover>fieldset>div:last-child>div]:after:bg-inherit"
             onSubmit={submitHandler}
         >
             <fieldset className="ml-7 flex-1 min-w-fit relative before:absolute before:-left-7 before:top-1.5 before:w-4 before:aspect-square before:bg-primary_500 before:border before:border-primary_900 before:rounded-md">
@@ -47,7 +55,7 @@ export default function AddTaskForm() {
                     />
                 </div>
                 <div className="text-primary_800 flex flex-wrap gap-2 mt-2">
-                    <div className="relative">
+                    <div className="relative after:w-4 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5">
                         <label htmlFor="time" className="hidden">
                             Due Time:
                         </label>
@@ -57,21 +65,10 @@ export default function AddTaskForm() {
                             id="time"
                             ref={timeRef}
                             className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer"
-                            // defaultValue="00:00"
+                            defaultValue={currentTime}
                         />
-                        {/* {timeHasValue && (
-                            <div
-                                className="cursor-pointer hover:bg-primary_700 absolute top-0 left-0 text-primary_300 bg-primary_900 rounded-full w-full h-full flex items-center justify-center"
-                                onClick={() => {
-                                    setTimeHasValue(false);
-                                    timeRef.current.click();
-                                }}
-                            >
-                                Due Time
-                            </div>
-                        )} */}
                     </div>
-                    <div className="relative">
+                    <div className="relative after:w-4 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5">
                         <label htmlFor="date" className="hidden">
                             Due Date:
                         </label>
@@ -81,19 +78,8 @@ export default function AddTaskForm() {
                             id="date"
                             ref={dateRef}
                             className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer w-40"
-                            // defaultValue="2023-12-31"
+                            defaultValue={currentDate}
                         />
-                        {/* {dateHasValue && (
-                            <div
-                                className="cursor-pointer hover:bg-primary_700 absolute top-0 left-0 text-primary_300 bg-primary_900 rounded-full w-full h-full flex items-center justify-center"
-                                onClick={() => {
-                                    setDateHasValue(false);
-                                    dateRef.current.click();
-                                }}
-                            >
-                                Due Date
-                            </div>
-                        )} */}
                     </div>
                 </div>
             </fieldset>
