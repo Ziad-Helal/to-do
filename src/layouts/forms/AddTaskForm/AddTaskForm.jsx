@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../../components";
 import { uploadTask } from "../../../store/tasks/tasks-actionCreators";
-import { isMobile } from "../../../helper";
 
 export default function AddTaskForm() {
     const dispatch = useDispatch();
@@ -65,9 +64,7 @@ export default function AddTaskForm() {
                             name="time"
                             id="time"
                             ref={timeRef}
-                            className={`bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer ${
-                                isMobile === true && "w-28"
-                            }`}
+                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer"
                             defaultValue={currentTime}
                         />
                     </div>

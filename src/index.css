@@ -79,7 +79,7 @@ input[type="time"]::-webkit-datetime-edit {
 } */
 
 input[type="time"] {
-    background: url("./assets/imgs/wall-clock.png") 82% / 14% no-repeat;
+    background: url("./assets/imgs/wall-clock.png") 82% / 15% no-repeat;
 }
 
 input[type="date"] {
