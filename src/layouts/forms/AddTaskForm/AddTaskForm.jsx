@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../../components";
 import { uploadTask } from "../../../store/tasks/tasks-actionCreators";
 
 export default function AddTaskForm() {
+    // const [timeHasValue, setTimeHasValue] = useState(true);
+    // const [dateHasValue, setDateHasValue] = useState(true);
     const dispatch = useDispatch();
 
     const taskRef = useRef();
@@ -40,12 +42,12 @@ export default function AddTaskForm() {
                         id="task"
                         ref={taskRef}
                         className="text-xl font-semibold outline-none bg-inherit w-full"
-                        defaultValue="Create a new Task here"
+                        defaultValue="Type your new Task here"
                         required
                     />
                 </div>
                 <div className="text-primary_800 flex flex-wrap gap-2 mt-2">
-                    <div>
+                    <div className="relative">
                         <label htmlFor="time" className="hidden">
                             Due Time:
                         </label>
@@ -57,8 +59,19 @@ export default function AddTaskForm() {
                             className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer"
                             // defaultValue="00:00"
                         />
+                        {/* {timeHasValue && (
+                            <div
+                                className="cursor-pointer hover:bg-primary_700 absolute top-0 left-0 text-primary_300 bg-primary_900 rounded-full w-full h-full flex items-center justify-center"
+                                onClick={() => {
+                                    setTimeHasValue(false);
+                                    timeRef.current.click();
+                                }}
+                            >
+                                Due Time
+                            </div>
+                        )} */}
                     </div>
-                    <div>
+                    <div className="relative">
                         <label htmlFor="date" className="hidden">
                             Due Date:
                         </label>
@@ -70,6 +83,17 @@ export default function AddTaskForm() {
                             className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer w-40"
                             // defaultValue="2023-12-31"
                         />
+                        {/* {dateHasValue && (
+                            <div
+                                className="cursor-pointer hover:bg-primary_700 absolute top-0 left-0 text-primary_300 bg-primary_900 rounded-full w-full h-full flex items-center justify-center"
+                                onClick={() => {
+                                    setDateHasValue(false);
+                                    dateRef.current.click();
+                                }}
+                            >
+                                Due Date
+                            </div>
+                        )} */}
                     </div>
                 </div>
             </fieldset>
