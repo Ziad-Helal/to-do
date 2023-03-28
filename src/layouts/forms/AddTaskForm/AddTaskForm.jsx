@@ -35,7 +35,7 @@ export default function AddTaskForm() {
 
     return (
         <form
-            className="bg-primary_400 m-3.5 p-3.5 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_800 [&:hover>fieldset>div:last-child>div>input]:text-primary_400 [&:hover>fieldset>div:last-child>div>input]:border-primary_400 [&:hover>fieldset>div:last-child>div]:after:bg-inherit"
+            className="bg-primary_400 m-3.5 p-3.5 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_700 [&:hover>fieldset>div>input]:placeholder-black dark:[&:hover>fieldset>div>input]:placeholder-white [&:hover>fieldset>div>input]:placeholder-opacity-60 dark:[&:hover>fieldset>div>input]:placeholder-opacity-60 [&:hover>fieldset>div:last-child>div>input]:text-primary_300 [&:hover>fieldset>div:last-child>div>input]:border-primary_400 [&:hover>fieldset>div:last-child>div]:after:bg-inherit"
             onSubmit={submitHandler}
         >
             <fieldset className="ml-7 flex-1 min-w-fit relative before:absolute before:-left-7 before:top-1.5 before:w-4 before:aspect-square before:bg-primary_500 before:border before:border-primary_900 before:rounded-md">
@@ -49,8 +49,8 @@ export default function AddTaskForm() {
                         name="task"
                         id="task"
                         ref={taskRef}
-                        className="text-xl font-semibold outline-none bg-inherit w-full"
-                        defaultValue="Type your new Task here"
+                        className="text-xl font-semibold outline-none bg-inherit w-full rounded-md placeholder-white dark:placeholder-black placeholder-opacity-60 dark:placeholder-opacity-60"
+                        placeholder="Type your new Task here"
                         required
                     />
                 </div>
@@ -64,7 +64,7 @@ export default function AddTaskForm() {
                             name="time"
                             id="time"
                             ref={timeRef}
-                            className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer"
+                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer"
                             defaultValue={currentTime}
                         />
                     </div>
@@ -77,7 +77,7 @@ export default function AddTaskForm() {
                             name="date"
                             id="date"
                             ref={dateRef}
-                            className="bg-inherit outline-none border border-primary_900 rounded-full px-4 py-0.5 cursor-pointer w-40"
+                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer w-40"
                             defaultValue={currentDate}
                         />
                     </div>
