@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../../../components";
 import { uploadTask } from "../../../store/tasks/tasks-actionCreators";
+import { isMobile } from "../../../helper";
 
 export default function AddTaskForm() {
     const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export default function AddTaskForm() {
                     />
                 </div>
                 <div className="text-primary_800 flex flex-wrap gap-2 mt-2">
-                    <div className="relative after:w-4 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5">
+                    <div className="relative after:w-3.5 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5 after:z-10">
                         <label htmlFor="time" className="hidden">
                             Due Time:
                         </label>
@@ -64,11 +65,13 @@ export default function AddTaskForm() {
                             name="time"
                             id="time"
                             ref={timeRef}
-                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer"
+                            className={`bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer ${
+                                isMobile === true && "w-28"
+                            }`}
                             defaultValue={currentTime}
                         />
                     </div>
-                    <div className="relative after:w-4 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5">
+                    <div className="relative after:w-4 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5 after:z-10">
                         <label htmlFor="date" className="hidden">
                             Due Date:
                         </label>
