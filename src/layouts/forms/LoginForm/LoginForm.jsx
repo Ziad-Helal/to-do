@@ -46,7 +46,7 @@ export default function LoginForm() {
                     minLength={6}
                     required
                 />
-                <Button type="submit" className="my-4">
+                <Button kind="primary" type="submit" className="my-4">
                     Login
                 </Button>
                 <p className="text-sm font-light px-4">

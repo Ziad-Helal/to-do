@@ -38,7 +38,7 @@ export default function Task({
     };
 
     const deleteTask = () => {
-        dispatch(removeTask(id));
+        dispatch(removeTask({ id }));
     };
 
     if (edit)

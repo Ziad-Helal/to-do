@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-export default function NavigationItem({ item = "NavigationItem", className = "" }) {
+export default function NavigationItem({
+    item = "NavigationItem",
+    className = "",
+    onLinkClick = () => {},
+}) {
     return (
         <li
             className={`bg-primary_700 font-medium border-b border-primary_600
@@ -13,6 +17,7 @@ export default function NavigationItem({ item = "NavigationItem", className = ""
                         isActive ? "" : "border-l-primary_700 hover:border-l-primary_400"
                     }`
                 }
+                onClick={onLinkClick}
             >
                 {item}
             </NavLink>

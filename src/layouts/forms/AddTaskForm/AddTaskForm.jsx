@@ -28,9 +28,9 @@ export default function AddTaskForm() {
 
         dispatch(uploadTask({ task, time, date }));
 
-        taskRef.current.value = "Create a new Task here";
-        timeRef.current.value = "";
-        dateRef.current.value = "";
+        taskRef.current.value = "";
+        timeRef.current.value = currentTime;
+        dateRef.current.value = currentDate;
     };
 
     return (

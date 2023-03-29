@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    email: "newuser@ziad-to-do.com",
+    userData: {
+        id: localStorage.getItem("userId"),
+        token: localStorage.getItem("token"),
+        email: localStorage.getItem("userEmail"),
+    },
+    isLogged: !!localStorage.getItem("token"),
 };
 
 export const userSlice = createSlice({
@@ -9,17 +14,22 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         login(state, action) {
-            const email = action.payload.email;
-            const token = action.payload.token;
-            const userId = action.payload.userId;
+            const userData = action.payload;
 
-            localStorage.setItem("token", token);
-            localStorage.setItem("userId", userId);
-            state.email = email;
+            localStorage.setItem("token", userData.token);
+            localStorage.setItem("userId", userData.id);
+            localStorage.setItem("userEmail", userData.email);
+
+            state.userData = userData;
+            state.isLogged = true;
         },
         logout(state) {
             localStorage.removeItem("token");
-            state = initialState;
+            localStorage.removeItem("userId");
+            localStorage.removeItem("userEmail");
+
+            state.userData = {};
+            state.isLogged = false;
         },
     },
 });

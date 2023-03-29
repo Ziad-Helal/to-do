@@ -4,6 +4,7 @@ const initialState = {
     tasks: [],
     count: 0,
     isLoading: false,
+    isErasing: false,
 };
 
 export const tasksSlice = createSlice({
@@ -40,6 +41,9 @@ export const tasksSlice = createSlice({
         clearAllTasks(state) {
             state.tasks = [];
             state.count = 0;
+        },
+        erasing(state, action) {
+            state.isErasing = action.payload;
         },
         loading(state, action) {
             state.isLoading = action.payload;

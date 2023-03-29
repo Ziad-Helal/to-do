@@ -39,22 +39,19 @@ export const auth = ({ type, email, password, idToken }, navigate) => {
             body: JSON.stringify(body),
         });
 
-        console.log(JSON.stringify(body));
-
         fetch(request)
             .then((response) => response.json())
             .then((response) => {
                 if (response.error) console.log(response.error.message);
                 else {
-                    console.log(response);
                     dispatch(
                         userActions.login({
-                            email: response.email,
+                            id: response.localId,
                             token: response.idToken,
-                            userId: response.localId,
+                            email: response.email,
                         })
                     );
-                    navigate("/welcome", { replace: true });
+                    navigate("/Welcome", { replace: true });
                 }
             })
             .catch((error) => console.log(error));

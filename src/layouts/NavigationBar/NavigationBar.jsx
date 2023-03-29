@@ -16,8 +16,12 @@ export default function NavigationBar() {
         setScreenWidth(innerWidth);
     };
 
+    const closeMenu = () => {
+        setMenuIsOpen(false);
+    };
+
     const mediaHandler = (event) => {
-        if (event.matches) setMenuIsOpen(false);
+        if (event.matches) closeMenu();
     };
 
     useEffect(() => {
@@ -45,7 +49,11 @@ export default function NavigationBar() {
                     )}
                 </Button>
             )}
-            <NavigationList screenWidth={screenWidth} menuIsOpen={menuIsOpen} />
+            <NavigationList
+                screenWidth={screenWidth}
+                menuIsOpen={menuIsOpen}
+                closeMenu={closeMenu}
+            />
         </nav>
     );
 }

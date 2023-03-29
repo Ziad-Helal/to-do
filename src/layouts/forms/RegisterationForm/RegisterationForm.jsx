@@ -66,7 +66,7 @@ export default function RegisterationForm() {
                     minLength={6}
                     required
                 />
-                <Button type="submit" className="my-4">
+                <Button kind="primary" type="submit" className="my-4">
                     Sign-up
                 </Button>
                 <p className="text-sm font-light px-4">

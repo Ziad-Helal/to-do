@@ -36,8 +36,8 @@ export default function ChangePasswordForm() {
                     autoFocus
                     required
                 />
-                <Button type="submit" className="my-4">
-                    Login
+                <Button kind="primary" type="submit" className="my-4">
+                    Confirm
                 </Button>
                 <p className="text-sm font-light px-4">
                     You didn't create an account yet?{" "}

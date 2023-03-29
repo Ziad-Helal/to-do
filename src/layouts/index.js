@@ -11,6 +11,9 @@ import Task from "./TaskList/Task/Task";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import NavigationList from "./NavigationBar/NavigationList/NavigationList";
 import NavigationItem from "./NavigationBar/NavigationList/NavigationItem/NavigationItem";
+import UserData from "./UserData/UserData";
+import UserSettings from "./UserSettings/UserSettings";
+import UserSetting from "./UserSettings/UserSetting/UserSetting";
 
 export {
     MainPageLayout,
@@ -26,4 +29,7 @@ export {
     NavigationBar,
     NavigationList,
     NavigationItem,
+    UserSettings,
+    UserSetting,
+    UserData,
 };

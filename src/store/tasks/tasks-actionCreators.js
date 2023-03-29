@@ -26,19 +26,32 @@ export const uploadTask = ({ task, time, date }) => {
     };
 };
 
-export const removeTask = (id) => {
+export const removeTask = ({ type, id }) => {
     return (dispatch) => {
-        dispatch(tasksActions.removeTask(id));
-
         const userId = localStorage.getItem("userId");
-        const url = `${database}/users/${userId}/tasks/${id}.json`;
+        let url;
+
+        if (type === "all") {
+            dispatch(tasksActions.loading(true));
+            dispatch(tasksActions.erasing(true));
+            url = `${database}/users/${userId}/tasks.json`;
+            dispatch(tasksActions.clearAllTasks());
+        } else {
+            url = `${database}/users/${userId}/tasks/${id}.json`;
+            dispatch(tasksActions.removeTask(id));
+        }
 
         const request = new Request(url, { method: "DELETE" });
 
         fetch(request)
             .then((response) => {
-                if (response.status) console.log("Task Deleted");
-                else console.log(response);
+                if (response.status) {
+                    console.log("Done");
+                    if (type === "all") {
+                        dispatch(tasksActions.loading(false));
+                        dispatch(tasksActions.erasing(false));
+                    }
+                } else console.log(response);
             })
             .catch((error) => console.log(error));
     };

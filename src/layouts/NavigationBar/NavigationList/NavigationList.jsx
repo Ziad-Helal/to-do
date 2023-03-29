@@ -1,12 +1,24 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../../store/user/user-slice";
 import { NavigationItem } from "../../../layouts";
-import { NavLink } from "react-router-dom";
 
 const menu = ["Welcome", "Profile"];
 
-export default function NavigationList({ screenWidth = innerWidth, menuIsOpen = false }) {
-    const logout = () => {};
+export default function NavigationList({
+    screenWidth = innerWidth,
+    menuIsOpen = false,
+    closeMenu = () => {},
+}) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logout = () => {
+        dispatch(userActions.logout());
+        navigate("/login");
+    };
 
     if (screenWidth <= 400)
         return (
@@ -20,6 +32,7 @@ export default function NavigationList({ screenWidth = innerWidth, menuIsOpen = 
                         key={index + 1}
                         item={item}
                         className={`transition ${menuIsOpen ? "delay-75 scale-100" : "scale-0"}`}
+                        onLinkClick={closeMenu}
                     />
                 ))}
                 <li
