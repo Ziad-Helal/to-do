@@ -7,6 +7,7 @@ import {
     RegistrationPage,
     ChangePasswordPage,
     WelcomePage,
+    ProfilePage,
     NotFoundPage,
 } from "./pages";
 import { MainPageLayout } from "./layouts";
@@ -20,7 +21,8 @@ export default function App() {
                     <MainPageLayout>
                         <Routes>
                             <Route path="/" element={<HomePage />} />
-                            <Route path="/welcome" element={<WelcomePage />} />
+                            <Route path="/Welcome" element={<WelcomePage />} />
+                            <Route path="/Profile" element={<ProfilePage />} />
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/register" element={<RegistrationPage />} />
                             <Route path="/change_password" element={<ChangePasswordPage />} />

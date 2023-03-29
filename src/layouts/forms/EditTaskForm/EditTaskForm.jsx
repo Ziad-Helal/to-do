@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle, faCheckCircle, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../../store/tasks/tasks-actionCreators";
+import { Button } from "../../../components";
 
 export default function EditTaskForm({
     id = "t0",
@@ -31,10 +32,10 @@ export default function EditTaskForm({
 
     return (
         <form
-            className="bg-primary_400 m-3.5 p-3.5 pl-11 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_800 [&:hover>fieldset>div:last-child]:text-primary_400"
+            className="bg-primary_400 m-3.5 p-3.5 rounded-2xl flex flex-wrap gap-5 items-center justify-center hover:text-primary_200 hover:bg-primary_700 [&:hover>fieldset>div:last-child>div>input]:text-primary_300 [&:hover>fieldset>div:last-child>div>input]:border-primary_400 [&:hover>fieldset>div:last-child>div]:after:bg-inherit"
             onSubmit={submitHandler}
         >
-            <fieldset className="flex-1 min-w-fit relative before:absolute before:-left-7 before:top-1.5 before:w-4 before:aspect-square before:bg-primary_500 before:border before:border-primary_900 before:rounded-md">
+            <fieldset className="ml-7 flex-1 min-w-fit relative before:absolute before:-left-7 before:top-1.5 before:w-4 before:aspect-square before:bg-primary_500 before:border before:border-primary_900 before:rounded-md">
                 <legend className="hidden">Create a Task</legend>
                 <div>
                     <label htmlFor={`editTask${id}`} className="hidden">
@@ -45,13 +46,13 @@ export default function EditTaskForm({
                         name="task"
                         id={`editTask${id}`}
                         ref={taskRef}
-                        className="text-xl font-semibold outline-none bg-inherit w-full"
+                        className="text-xl font-semibold outline-none bg-inherit w-full rounded-md"
                         defaultValue={task}
                         required
                     />
                 </div>
-                <div className="text-primary_800 flex flex-wrap gap-x-5">
-                    <div>
+                <div className="text-primary_800 flex flex-wrap gap-2 mt-2">
+                    <div className="relative after:w-3.5 after:h-5/6 after:rounded-r-full after:bg-primary_400 after:absolute after:right-0.5 after:top-0.5 after:z-10">
                         <label htmlFor={`editTime${id}`} className="hidden">
                             Due Time:
                         </label>
@@ -60,7 +61,7 @@ export default function EditTaskForm({
                             name="time"
                             id={`editTime${id}`}
                             ref={timeRef}
-                            className="bg-inherit outline-none"
+                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer"
                             defaultValue={time}
                         />
                     </div>
@@ -73,27 +74,29 @@ export default function EditTaskForm({
                             name="date"
                             id={`editdate${id}`}
                             ref={dateRef}
-                            className="bg-inherit outline-none w-32"
+                            className="bg-inherit outline-none border border-primary_700 rounded-full px-4 py-0.5 cursor-pointer w-40"
                             defaultValue={date}
                         />
                     </div>
                 </div>
             </fieldset>
             <div className="text-xl">
-                <button type="submit" className="leading-3">
+                <Button type="submit" className="leading-3">
                     <FontAwesomeIcon
                         icon={faCheckCircle}
                         title="Confirm Changes"
-                        className="hover:cursor-pointer hover:text-primary_400"
+                        className="hover:text-primary_400"
                         onClick={submitHandler}
                     />
-                </button>
-                <FontAwesomeIcon
-                    icon={faXmarkCircle}
-                    title="Go Back"
-                    className="ml-2 hover:cursor-pointer hover:text-primary_400"
-                    onClick={onSubmit}
-                />
+                </Button>
+                <Button>
+                    <FontAwesomeIcon
+                        icon={faXmarkCircle}
+                        title="Go Back"
+                        className="ml-2 hover:text-primary_400"
+                        onClick={onSubmit}
+                    />
+                </Button>
             </div>
         </form>
     );

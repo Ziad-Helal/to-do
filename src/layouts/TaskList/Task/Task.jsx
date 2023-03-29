@@ -4,6 +4,7 @@ import { faClock, faCalendarDays, faTrashCan, faEdit } from "@fortawesome/free-r
 import { useDispatch } from "react-redux";
 import { updateTask, removeTask } from "../../../store/tasks/tasks-actionCreators";
 import { EditTaskForm } from "../../../layouts";
+import { Button } from "../../../components";
 
 export default function Task({
     id = "t0",
@@ -90,18 +91,22 @@ export default function Task({
                     </div>
                 </div>
                 <div className="text-xl">
-                    <FontAwesomeIcon
-                        icon={faEdit}
-                        title="Edit Task"
-                        className="hover:cursor-pointer hover:text-primary_400"
-                        onClick={editTask}
-                    />
-                    <FontAwesomeIcon
-                        icon={faTrashCan}
-                        title="Delete Task"
-                        className="ml-2 hover:cursor-pointer hover:text-primary_400"
-                        onClick={deleteTask}
-                    />
+                    <Button>
+                        <FontAwesomeIcon
+                            icon={faEdit}
+                            title="Edit Task"
+                            className="hover:text-primary_400"
+                            onClick={editTask}
+                        />
+                    </Button>
+                    <Button>
+                        <FontAwesomeIcon
+                            icon={faTrashCan}
+                            title="Delete Task"
+                            className="ml-2 hover:text-primary_400"
+                            onClick={deleteTask}
+                        />
+                    </Button>
                 </div>
             </article>
         );

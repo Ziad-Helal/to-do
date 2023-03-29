@@ -6,7 +6,7 @@ const types = {
 export default function Button({
     children = "Button",
     type = "button",
-    kind = "primary",
+    kind = "",
     title = "",
     className = "",
     onClick = () => {},
@@ -15,7 +15,10 @@ export default function Button({
         <button
             type={type}
             title={title}
-            className={`font-medium py-2 px-5 rounded-3xl border-2 border-primary_700 ${types[kind]} hover:bg-primary_900 hover:border-primary_900 transition ${className}`}
+            className={`${
+                kind &&
+                `font-medium py-2 px-5 rounded-3xl border-2 border-primary_700 ${types[kind]} hover:bg-primary_900 hover:border-primary_900 transition`
+            } ${className}`}
             onClick={onClick}
         >
             {children}

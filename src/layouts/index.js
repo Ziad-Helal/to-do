@@ -8,6 +8,9 @@ import AddTaskForm from "./forms/AddTaskForm/AddTaskForm";
 import EditTaskForm from "./forms/EditTaskForm/EditTaskForm";
 import TaskList from "./TaskList/TaskList";
 import Task from "./TaskList/Task/Task";
+import NavigationBar from "./NavigationBar/NavigationBar";
+import NavigationList from "./NavigationBar/NavigationList/NavigationList";
+import NavigationItem from "./NavigationBar/NavigationList/NavigationItem/NavigationItem";
 
 export {
     MainPageLayout,
@@ -20,4 +23,7 @@ export {
     EditTaskForm,
     TaskList,
     Task,
+    NavigationBar,
+    NavigationList,
+    NavigationItem,
 };
