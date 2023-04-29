@@ -19,10 +19,10 @@ export const uploadTask = ({ task, time, date }) => {
         fetch(request)
             .then((response) => response.json())
             .then((response) => {
-                if (response.error) console.log(response.error);
+                if (response.error) alert(response.error);
                 else dispatch(tasksActions.addTask({ ...body, id: response.name }));
             })
-            .catch((error) => console.log(error));
+            .catch((error) => alert(error));
     };
 };
 
@@ -51,9 +51,9 @@ export const removeTask = ({ type, id }) => {
                         dispatch(tasksActions.loading(false));
                         dispatch(tasksActions.erasing(false));
                     }
-                } else console.log(response);
+                } else alert(response);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => alert(error));
     };
 };
 
@@ -82,7 +82,7 @@ export const updateTask = ({ id, task, time, date, done }) => {
 
         const request = new Request(url, { method: "PUT", body });
 
-        fetch(request).catch((error) => console.log(error));
+        fetch(request).catch((error) => alert(error));
     };
 };
 
@@ -97,7 +97,7 @@ export const getTasks = () => {
             .then((response) => response.json())
             .then((response) => {
                 if (response === null) console.log("No tasks available!");
-                else if (response.error) console.log(response.error);
+                else if (response.error) alert(response.error);
                 else {
                     dispatch(tasksActions.clearAllTasks());
                     for (let key in response) {
@@ -114,6 +114,6 @@ export const getTasks = () => {
                 }
             })
             .then(() => dispatch(tasksActions.loading(false)))
-            .catch((error) => console.log(error));
+            .catch((error) => alert(error));
     };
 };

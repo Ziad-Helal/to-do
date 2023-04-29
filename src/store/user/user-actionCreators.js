@@ -42,7 +42,7 @@ export const auth = ({ type, email, password, idToken }, navigate) => {
         fetch(request)
             .then((response) => response.json())
             .then((response) => {
-                if (response.error) console.log(response.error.message);
+                if (response.error) alert(response.error.message);
                 else {
                     dispatch(
                         userActions.login({
@@ -54,6 +54,6 @@ export const auth = ({ type, email, password, idToken }, navigate) => {
                     navigate("/Welcome", { replace: true });
                 }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => alert(error));
     };
 };
